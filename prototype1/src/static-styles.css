@@ -1,0 +1,170 @@
+/*
+	Colors:
+	#F0F0F0
+	#4C4C4C
+	#303030
+
+	Ugly...need to clean this up
+*/
+
+
+body {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+div#app {
+	margin: 0;
+	padding: 0;
+}
+
+div#header {
+	display: block;
+	height: 40px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+div#title {
+	/*background-color: #439974;*/
+	background-color: #303030;
+	width: 200px;
+	height: 100%;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 30px;
+	margin: 0 auto;
+}
+
+div#content {
+	display: block;
+	text-align: center;
+	height: 300px;
+	margin: 0 auto;
+}
+
+div#contentcontainer {
+	position: relative;
+	height: 100%;
+	width: 200px;
+	margin: 0 auto;
+}
+
+div.contentpage {
+	position: absolute;
+	display: none;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+
+div.contentpage.active {
+	display: block;
+	z-index: 1000;
+}
+
+div#mainmenu {
+
+}
+
+.grid-block {
+	display: inline-block;
+	/*background-color: #65B391;*/
+	background-color: #F0F0F0;
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	float: left; 
+	height: 100px; 
+	width: 100px;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+	box-sizing: border-box;
+
+	border: 1px solid #FFFFFF;
+}
+
+div.list-block {
+	display: block;
+	background-color: #F0F0F0;
+	line-height: 100px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100px;
+	width: 200px;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+	box-sizing: border-box;
+
+	border: 1px solid #FFFFFF;
+}
+
+.image-placeholder {
+	line-height: 100px;
+	color: #000000;
+}
+
+div#gestures {
+
+}
+
+div#gesturestoolbar {
+	display: block;
+	border-bottom: 1px solid #F0F0F0;
+	width: 95%;
+	height: 30px;
+	line-height: 30px;
+	margin: 0 auto;
+}
+
+div #gesturespanel {
+
+}
+
+div#footer {
+	display: block;
+	height: 40px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+div#family-selector {
+	height: 100%;
+	width: 200px;
+	margin: 0 auto;
+}
+
+.family-member-button {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+	height: 100%;
+	width: 48px;
+	background-color: #303030;
+	/*background-color: #439974;*/
+
+	border-right: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+}
+
+.family-member-button.active {
+	/*background-color: #65B391;*/
+	background-color: #4C4C4C;
+}
+
+div#backbutton {
+	display: inline-block;
+	background-color: #303030;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 30px;
+	height: 30px;
+	width: 50px;
+
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" 
+	"http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+
+<html>
+
+<head>
+	<title>ily</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+	<script src="https://s3.amazonaws.com/codiqa-cdn/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="scripts.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+<div id="app">
+	<div id="header">
+		<div id="title">ily</div>
+	</div>
+
+	<!-- content div holds all of the divs for the different pages -->
+	<div id="content">
+		<div id="contentcontainer">
+			<!-- splash screen -->
+
+			<!-- login screen -->
+
+			<!-- main menu page -->
+
+			<!-- ID naming scheme: <id of desired page>-select -->
+			<div id="mainmenu" class="contentpage active">
+				<div id="gamesmenu-select" class="grid-block menuitem"> 
+					<div class="image-placeholder">
+						Games
+					</div>
+				</div>
+				<div id="audio-select" class="grid-block menuitem"> 
+					<div class="image-placeholder">
+						Audio Message
+					</div>
+				</div>
+				<div id="gestures-select" class="grid-block menuitem"> 
+					<div class="image-placeholder">
+						Gestures
+					</div>
+				</div>
+				<div class="grid-block"> 
+					<div class="image-placeholder"></div>
+				</div>
+				<div class="grid-block"> 
+					<div class="image-placeholder"></div>
+				</div>
+				<div class="grid-block"> 
+					<div class="image-placeholder"></div>
+				</div>
+			</div>
+
+			<!-- games menu -->
+			<div id="gamesmenu" class="contentpage">
+				<div id="newgamesmenu-select" class="list-block menuitem">New Game</div>
+				<div class="list-block menuitem">Saved Game</div>
+				<div class="list-block menuitem">Settings</div>
+			</div>
+
+			<!-- new games screen -->
+			<div id="newgamesmenu" class="contentpage">
+				<div class="grid-block">
+					<div id="tictactoe-select" class="image-placeholder">
+						Tic Tac Toe
+					</div>
+				</div>
+			</div>
+
+			<!-- audio screen -->
+			<div id="audio" class="contentpage">
+				<div id="messagecontainer"></div>
+				<div id="audiodash"></div>
+			</div>
+
+			<!-- gestures -->
+			<div id="gestures" class="contentpage">
+				<div id="gesturestoolbar">toolbar</div>
+				<div id="gesturespanel"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div id="family-selector">
+			<div id="dad" class="family-member-button">
+
+			</div>
+			<div id="mom" class="family-member-button">
+
+			</div>
+			<div id="sis" class="family-member-button">
+
+			</div>
+			<div id="add-member" class="family-member-button">
+
+			</div>
+
+		</div>
+
+		<div id="backbutton">Back</div>
+	</div>
+
+
+
+</div>
+
+</body>
+
+</html>
