@@ -2,7 +2,7 @@
 	Colors:
 	#F0F0F0
 	#4C4C4C
-	#303030
+	#8ad749
 
 	Ugly...need to clean this up
 */
@@ -32,7 +32,7 @@ div#app {
 }
 
 div#header {
-	background-color: #CC3333; /*#303030*/
+	background-color: #8ad749; /*#8ad749*/
 	display: block;
 	height: 40px;
 	width: 100%;
@@ -144,6 +144,28 @@ fieldset {
 	font: bold 14px Arial, Helvetica;
 }
 
+
+
+
+
+/* Register & Forgot Password Screens */
+
+#register{
+	padding-top: 65px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	font-size: 85%;
+}
+
+#register-text{
+	text-align:center;
+}
+
+
+
+
+
 /* Main Menu Screen */
 
 div#mainmenu {
@@ -155,7 +177,7 @@ div#mainmenu {
 
 div.grid-block {
 	display: inline-block;
-	background-color: #F2F2F2; /*#F0F0F0*/
+	background-color: #FFFFFF; /*#F0F0F0*/
 	margin: 0; 
 	padding: 0; 
 	border: 0; 
@@ -252,7 +274,7 @@ div#tictactoepanel {
 
 div#footer {
 	position: absolute;
-	background-color: #CC3333; /*#303030*/
+	background-color: #8ad749; /*#8ad749*/
 	display: block;
 	height: 40px;
 	width: 100%;
@@ -274,7 +296,7 @@ div#family-selector {
 	float: left;
 	height: 100%;
 	width: 25%;
-	background-color: #CC3333; /*#303030*/
+	background-color: #8ad749; /*#8ad749*/
 	text-align: center;
 
 	border-right: 1px solid #FFFFFF;
@@ -282,7 +304,7 @@ div#family-selector {
 }
 
 .family-member-button.active {
-	background-color: #E94F4F;
+	background-color: #D40094; /*D40094 E9008F*/
 }
 
 .family-member-button > .img-wrapper {
@@ -293,7 +315,7 @@ div#family-selector {
 /* Debug tools styles */
 div#backbutton {
 	display: inline-block;
-	background-color: #CC3333; /*#303030*/
+	background-color: #8ad749; /*#8ad749*/
 	color: #FFFFFF;
 	text-align: center;
 	line-height: 30px;

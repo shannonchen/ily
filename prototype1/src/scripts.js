@@ -18,8 +18,6 @@ var appstate = {
 		this.activePage = 'login'
 		$('#login').fadeIn('fast').addClass('active');
 
-		$('<img/>')[0].src = 'Ily-highfive.png';
-
 		//$('#content').css('height', this.dimensions.height - 80);
 	},
 	resize: function() {
