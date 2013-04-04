@@ -18,6 +18,7 @@
 
 <div id="app">
 	<div id="header">
+		<div id="backbutton"><img src="back.gif" width=100%></img></div>
 		<div id="title"><img src="Ily-Logo-White.gif" height="90%"></img></div>
 	</div>
 
@@ -25,10 +26,6 @@
 	<div id="content">
 		<div id="contentcontainer">
 			<!-- splash screen -->
-
-
-
-
 
 			<!-- login screen -->
 			<div id="login" class="contentpage">
@@ -47,12 +44,7 @@
 				</form>
 
 			</div>
-			
-			
-			
-			
-			
-			
+
 			<!-- main menu page -->
 
 			<!-- ID naming scheme: <id of desired page>-select -->
@@ -67,7 +59,7 @@
 						<img src="9.gif" height="80%"></img>
 					</div>
 				</div>
-				<div id="gamesmenu-select" class="grid-block menuitem"> 
+				<div id="newgamesmenu-select" class="grid-block menuitem"> 
 					<div class="image-placeholder">
 						<img src="11.gif" height="80%"></img>
 					</div>
@@ -85,12 +77,16 @@
 				</div>
 			</div>
 
+			<!-- unfinished overlay -->
+			<div id="unfinished" class="overlaypage">
+				<div id="logo"><img src="Ily-Logo-White.gif" height="70px"></img></div>
+
+				This feature has not been implemented yet.
+
+				<div id="close-notice"><a href="">Close</a></div>
+			</div>
+
 			<!-- games menu -->
-		<!--	<div id="gamesmenu" class="contentpage">
-				<div id="newgamesmenu-select" class="list-block menuitem">New Game</div>
-				<div class="list-block menuitem">Saved Game</div>
-				<div class="list-block menuitem"></div>
-			</div>  -->
 
 			<!-- new games screen -->
 			<div id="newgamesmenu" class="contentpage">
@@ -101,8 +97,17 @@
 
 			<!-- tic tac toe screen -->
 			<div id="tictactoe" class="contentpage">
+				<span id="player_name"></span>make your move (<span id="player_mark"></span>)
 				<div id="tictactoepanel">
 					
+				</div>
+				<div id="winner" class="end_game">
+					And the winner is: <span id="winner_name"></span>
+				</div>
+				<div id="ask_restart" class="end_game">
+					Would you like to play again?
+					<a href="" id="restart_game">Yes</a>
+					<a href="" id="quit_game">No</a>
 				</div>
 			</div>
 
@@ -114,13 +119,27 @@
 				</div>
 			</div>
 
+			<div id="audio-record" class="overlaypage">
+				<div id="audio-record-display">
+					<div id="audio-record-time"></div>
+				</div>
+				<div id="audio-record-dash">
+					
+					<div id="audio-center-container">
+						<div id="audio-cancel"></div>
+						<div id="button-left" class="audiobutton"></div>
+						<div id="button-right" class="audiobutton"></div>
+						<div id="audio-confirm"></div>
+					</div>
+
+				</div>
+			</div>
+
 			<!-- gestures -->
 			<div id="gestures" class="contentpage">
 				<div id="gesturespanel">
-					
+					<div id="gesturesimg"></div>
 				</div>
-				<div id="gesturestoolbar"><img src="toolbar.png" height="100%"></img></div>
-				
 			</div>
 		</div>
 	</div>
@@ -134,15 +153,13 @@
 				<div class="img-wrapper"><img src="mompic.png" height="100%"></img></div>
 			</div>
 			<div id="sis" class="family-member-button">
-				<div class="img-wrapper"><img src="kidpic.png" height="100%"></img></div>
+				<div class="img-wrapper"><img src="sispic.png" height="100%"></img></div>
 			</div>
 			<div id="add-member" class="family-member-button">
 				<div class="img-wrapper"><img src="Ily-plus.gif" height="100%"></img></div>
 			</div>
 
 		</div>
-
-		<div id="backbutton">Back</div>
 	</div>
 
 

@@ -21,6 +21,14 @@ div {
 	box-sizing: border-box;
 }
 
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
 div#app {
 	position: absolute;
 	margin: 0;
@@ -32,21 +40,37 @@ div#app {
 }
 
 div#header {
-	background-color: #8ad749; /*#8ad749*/
+	position: absolute;
+	background-color: #8ad749; /*#303030*/
 	display: block;
 	height: 40px;
 	width: 100%;
 	margin: 0 auto;
-	z-index: 10;
+	text-align: center;
+	z-index: 2000;
+}
+
+div#backbutton {
+	display: inline-block;
+	float: left;
+	background-color: #8ad749; /*#303030*/
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 30px;
+	height: 30px;
+	width: 40px;
+
 }
 
 div#title {
-	width: auto;
+	display: inline-block;
+	width: 40%;
 	height: 100%;
 	text-align: center;
 	color: #FFFFFF;
 	font-size: 30px;
 	margin: 0 auto;
+	padding-right: 40px;
 }
 
 #title > img {
@@ -87,6 +111,27 @@ div.contentpage {
 div.contentpage.active {
 	/*display: block;
 	z-index: 1000;*/
+}
+
+div.overlaypage {
+	position: absolute;
+	text-align: center;
+	color: #FFFFFF;
+	display: block;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+
+div.overlaypage.active {
+	background: #000000;
+	width: 100%;
+	height: 100%;
+	z-index: 2500;
+	top: 0;
+	left: 0;
+	position: fixed;
+	padding-top: 40px;
 }
 
 
@@ -144,28 +189,6 @@ fieldset {
 	font: bold 14px Arial, Helvetica;
 }
 
-
-
-
-
-/* Register & Forgot Password Screens */
-
-#register{
-	padding-top: 65px;
-	margin-left: 10%;
-	margin-right: 10%;
-	width: 80%;
-	font-size: 85%;
-}
-
-#register-text{
-	text-align:center;
-}
-
-
-
-
-
 /* Main Menu Screen */
 
 div#mainmenu {
@@ -216,22 +239,27 @@ div#gestures {
 
 }
 
-div#gesturestoolbar {
-	position: absolute;
-	border-bottom: 1px solid #F2F2F2; /*#F0F0F0*/
-	width: 100%;
-	height: 30px;
-	line-height: 30px;
-	margin: 0 auto;
-	background-color: #F2F2F2;
-}
-
-div #gesturespanel {
+div#gesturespanel {
 	position: absolute;
 	background-color: #F2F2F2;
 	height: 100%;
 	width: 100%;
-	padding-top: 30px;
+	text-align: center;
+}
+
+div#gesturesimg {
+	background-size: 100% 100%;
+	width: 200px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+div#gesturesimg.step0 {
+	background-image: url(highfive.gif);
+}
+
+div#gesturesimg.step1 {
+	background-image: url(highfive_sent.gif);
 }
 
 /* Audio Message Screen */
@@ -242,11 +270,79 @@ div#audio {
 div#messagecontainer {
 	display: block;
 	height: 80%;
+	overflow: hidden;
+}
+
+img.audio_component {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 div#audiodash {
 	display: block;
 	height: 20%;
+}
+
+div#audio-record-display {
+	display: block;
+	height: 80%;
+}
+
+div#audio-record-time {
+	min-width: 180px;
+	width: 30%;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 36px;
+	margin: 0 auto;
+}
+
+.audioplayer {
+	font-size: 12px;
+}
+
+div#audio-record-dash {
+	display: block;
+	height: 20%;
+	text-align: center;
+}
+
+div#audio-center-container {
+	width: 200px;
+	height: 90%;
+	margin: 0 auto;
+}
+
+div#audio-cancel {
+	background-image: url(x.png);
+	background-size: 100% 100%;
+	float: left;
+	width: 39px;
+	height: 39px;
+}
+
+div#audio-center-container .audiobutton {
+	background: url(audio-player-icons-rizwanashrafcom.jpg) no-repeat;
+	display: inline-block;
+	width: 39px;
+	height: 39px;
+}
+
+div#audio-center-container #button-left {
+	background-position: -110px -28px;
+}
+
+div#audio-center-container #button-right {
+	background-position: -14px -28px;
+}
+
+div#audio-confirm {
+	background-image: url(check.png);
+	background-size: 100% 100%;
+	float: right;
+	width: 39px;
+	height: 39px;
 }
 
 /* Tic Tac Toe Styles */
@@ -258,28 +354,71 @@ div#tictactoe {
 }
 
 div#tictactoepanel {
-	height: 95%;
-	width: auto;
-	min-width: 300px;
-	margin: 0 auto;
-	padding: 0;
-	background-image: url('Ily-ttt-blank.gif');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
+	display: block;
+	clear: both;
+	margin-right: auto;
+	margin-left: auto;
+	width: 180px;
+	height: 220px;
 }
 
+#tictactoepanel .cell {
+	cursor: pointer;
+	float: left;
+	border: 1px solid #000;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+	line-height: 0px;
+}
+
+#tictactoepanel .player1_cell {
+	color: #CC0000;
+}
+
+#tictactoepanel .player2_cell {
+	color: #0000CC;
+}
+
+#tictactoepanel .win {
+	background: #D3E7DC;
+}
+
+#player_mark, #player_name {
+	padding: 0px 3px;
+}
+
+.end_game {
+	display: none;
+}
+
+#winner_name{
+	text-decoration: underline;
+}
+table{
+	clear: both;
+}
+td{
+	text-align: center;
+}
 
 /* Footer Styles */
 
 div#footer {
 	position: absolute;
-	background-color: #8ad749; /*#8ad749*/
+	background-color: #8ad749; /*#303030*/
 	display: block;
 	height: 40px;
 	width: 100%;
 	margin: 0 auto;
 	bottom:0;
+	z-index: 2000;
 }
 
 div#family-selector {
@@ -296,7 +435,7 @@ div#family-selector {
 	float: left;
 	height: 100%;
 	width: 25%;
-	background-color: #8ad749; /*#8ad749*/
+	background-color: #8ad749; /*#303030*/
 	text-align: center;
 
 	border-right: 1px solid #FFFFFF;
@@ -304,7 +443,7 @@ div#family-selector {
 }
 
 .family-member-button.active {
-	background-color: #D40094; /*D40094 E9008F*/
+	background-color: #D40094;
 }
 
 .family-member-button > .img-wrapper {
@@ -313,13 +452,3 @@ div#family-selector {
 
 
 /* Debug tools styles */
-div#backbutton {
-	display: inline-block;
-	background-color: #8ad749; /*#8ad749*/
-	color: #FFFFFF;
-	text-align: center;
-	line-height: 30px;
-	height: 30px;
-	width: 50px;
-
-}
