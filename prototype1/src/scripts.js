@@ -1,3 +1,17 @@
+
+function sleep(milliseconds) {
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+		if ((new Date().getTime() - start) > milliseconds) {
+			break;
+		}
+	}
+}
+
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 var appstate = {
 	dimensions: {
 		height: 0,
@@ -25,7 +39,7 @@ var appstate = {
 				name: 'Sis',
 				img: 'sispic.png',
 				gamesInProgress: {},
-				numAudioMsgs: 2,
+				numAudioMsgs: 1,
 				audioMessages: {}
 			}
 		}
@@ -79,14 +93,28 @@ var appstate = {
 	updatePage: function() {
 		//console.log("Updating Page");
 		switch (this.activePage) {
+			case "mainmenu":
+				$('#title').html('<img src="Ily-Logo-White.gif" height="90%"></img>')
+				$('#helpmsg').text('Choose who to interact with on the bar at the bottom!\nChoose an activity by tapping it!');
+				break;
+			case "newgamesmenu":
+				$('#title').html('<img src="Ily-Logo-White.gif" height="90%"></img>')
+				$('#helpmsg').text('Choose who to play with on the bar at the bottom!\nChoose a game by tapping it!');
+				break;
 			case "audio":
 				var audio_container = $('#audio > div#messagecontainer');
 				var audio_dash = $('#audio > div#audiodash');
 				var target_member = this.acct.members[this.acct.activeFamilyMember]
 				audio_container.html('');
 				for (var i = 0; i < target_member.numAudioMsgs; i++) {
-					audio_container.append('<img class=\'audio_component\' src=\'audio_component.png\' height=\'89px\'></img>')
+					if (i % 2 == 0) {
+						audio_container.append('<img class=\'audio_component audio-left\' src=\'audio_green.gif\' height=\'100px\'></img>')
+					} else {
+						audio_container.append('<img class=\'audio_component audio-right\' src=\'audio_blue.gif\' height=\'100px\'></img>')
+					}
 				}
+				$('#helpmsg').text('<Insert audio messaging help>');
+				$('#title').text(this.acct.members[this.acct.activeFamilyMember].name);
 				break;
 			case "gestures":
 				var imgholder = $('#gesturesimg');
@@ -97,12 +125,32 @@ var appstate = {
 				} else {
 					imgholder.addClass('step0');
 				}
+				$('#helpmsg').text('Place your finger on the screen and move it so it matches the hand to send them a high five!');
+				$('#title').text(this.acct.members[this.acct.activeFamilyMember].name);
+				break;
+			case "tictactoe-load":
+				var imgholder = $('#loadingimg');
+				var app = this;
+				if (imgholder.hasClass('loading')) {
+					setTimeout(function() {
+						imgholder.removeClass('loading').addClass('loaded');
+						setTimeout(function() {
+							app.goToPage('tictactoe');
+						}, 1000);
+					}, 1000);
+				}
+				$('#title').text(this.acct.members[this.acct.activeFamilyMember].name);
 				break;
 			case "tictactoe":
 				this.activeActivity = new TicTacToeGame();
 				this.activeActivity.init(appstate.acct.activeFamilyMember);
-			break;
-			default: $('#title').html('<img src="Ily-Logo-White.gif" height="90%"></img>')
+				$('#helpmsg').text('When it\'s your turn, make your move by tapping a square!');
+				$('#title').text(this.acct.members[this.acct.activeFamilyMember].name);
+				break;
+			default: 
+				$('#title').html('<img src="Ily-Logo-White.gif" height="90%"></img>')
+				$('#helpmsg').text('Pick a family member from the bar at the bottom of the page, and interact with them!');
+
 		}
 	},
 
@@ -187,6 +235,7 @@ TicTacToeGame.prototype = {
 
 		this.players[0].name = appstate.acct.name;
 		this.players[1].name = name;
+
 		this.initTurn();
 
 		$('#tictactoepanel .cell').bind("click", function() {
@@ -201,6 +250,31 @@ TicTacToeGame.prototype = {
 				game.current_player = (++game.current_player) % game.players.length;
 				game.initTurn(game.current_player);
 			}
+
+			if (1 == game.current_player) {
+				setTimeout(function() {
+					var found = false;
+					var index = 0;
+					while (!found) {
+						index = getRandomInt(0,8);
+						currCell = $($('#tictactoepanel .cell').get(index));
+						if (!currCell.hasClass("marked")) {
+							found = true;
+							currCell
+								.addClass(game.players[1].style)
+								.addClass("marked")
+								.text(game.players[1].mark)
+								.unbind("click");
+						}
+					}
+
+					if (!game.checkAndProcessWin()) {
+						game.current_player = (++game.current_player) % game.players.length;
+						game.initTurn(game.current_player);
+					}
+				}, 500);
+			}
+					
 		});
 
 		$('#restart_game').bind("click", function(e) {
@@ -303,50 +377,29 @@ TicTacToeGame.prototype = {
 var FakeAudioRecording = function() {};
 
 FakeAudioRecording.prototype = {
-	countdown: 3,
 	timecount: 0,
 	totaltime: 0,
-	pre_count: true,
-	is_on: false,
-	running: true,
+	running: false,
 	recording: true,
 
 	init: function() {
 		var recording = this;
 
-		this.countdownhandle = setInterval(function() {
-			recording.countdown_step('audio-record-time'); 
-		}, 1000);
 		this.timerhandle = setInterval(function() {
 			recording.count('audio-record-time');
 		}, 1000);
-	},
 
-	countdown_step: function(target) {
-		this.countdown = this.countdown - 1;
-		
-		if (this.countdown >= 0) {
-			$('#' + target).text(this.countdown);
-		}
-
-		if (this.countdown < 0) {
-			clearInterval(this.countdownhandle);
-			this.pre_count = false;
-		}		
+		$('.grayable').addClass('inactive');
+		$('#button-left').removeClass('inactive');
 	},
 
 	count: function(target) {
-		if (!this.pre_count) {
-			this.is_on = true;
+		this.timecount = this.timecount + 1;
+		if (this.recording) {
+			this.totaltime = this.timecount;
 		}
-		if (this.is_on) {
-			this.timecount = this.timecount + 1;
-			if (this.recording) {
-				this.totaltime = this.timecount;
-			}
-			console.log(this.timecount + "-" + this.totaltime)
-			this.display(this.timecount, target);
-		}
+		console.log(this.timecount + "-" + this.totaltime)
+		this.display(this.timecount, target);
 	},
 
 	display: function(count, id, neg) {
@@ -372,20 +425,15 @@ FakeAudioRecording.prototype = {
 		this.running = false;
 		this.recording = false;
 
-		if (this.pre_count) {
-			clearInterval(this.countdownhandle);
-		}
-
 		clearInterval(this.timerhandle);
 		this.timecount = 0;
 		this.display(this.totaltime, 'audio-record-time');
+
+		$('.grayable').removeClass('inactive');
 	},
 
 	pause: function() {
 		this.running = false;
-		if (this.pre_count) {
-			clearInterval(this.countdownhandle);
-		}
 		clearInterval(this.timerhandle);
 	},
 
@@ -441,7 +489,7 @@ $(document).ready(function() {
 		appstate.goToPage(this.id.slice(0, this.id.lastIndexOf("-")));
 	});
 
-	$('#settings-select').click(function() {
+	$('.grid-block.unfinished').click(function() {
 		appstate.activateOverlay('unfinished');
 	});
 
@@ -467,23 +515,29 @@ $(document).ready(function() {
 	});
 
 	$('#audio-confirm').click(function() {
-		appstate.saveAudio();
-		appstate.deactivateOverlay('audio-record');
+		if (!$(this).hasClass('inactive')) {
+			appstate.saveAudio();
+			appstate.deactivateOverlay('audio-record');
+		}
 	});
 
 	$('#audio-center-container #button-left').click(function() {
-		appstate.activeActivity.stop();
+		if (!$(this).hasClass('inactive')) {
+			appstate.activeActivity.stop();
+		}
 	});
 
 	$('#audio-center-container #button-right').click(function() {
-		if (appstate.activeActivity.running) {
-			appstate.activeActivity.pause();
-			console.log("pausing");
-			$(this).css({'background-position': '-14px -28px'});
-		} else {
-			appstate.activeActivity.play();
-			console.log("playing");
-			$(this).css({'background-position': '-64px -28px'});
+		if (!$(this).hasClass('inactive')) {
+			if (appstate.activeActivity.running) {
+				appstate.activeActivity.pause();
+				console.log("pausing");
+				$(this).css({'background-position': '-14px -28px'});
+			} else {
+				appstate.activeActivity.play();
+				console.log("playing");
+				$(this).css({'background-position': '-64px -28px'});
+			}
 		}
 	});
 
@@ -491,6 +545,14 @@ $(document).ready(function() {
 		e.preventDefault();
 		appstate.deactivateOverlay('unfinished');
 	});
+
+	$('#helpbutton').click(function() {
+		appstate.activateOverlay('helpoverlay');
+	})
+
+	$('#helpoverlay').click(function() {
+		appstate.deactivateOverlay('helpoverlay');
+	})
 
 	$.expr[":"].mod = function(el, i, m) {
 		return i % m[3] === 0

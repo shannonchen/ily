@@ -20,6 +20,7 @@
 	<div id="header">
 		<div id="backbutton"><img src="back.gif" width=100%></img></div>
 		<div id="title"><img src="Ily-Logo-White.gif" height="90%"></img></div>
+		<div id="helpbutton"><img src="help.gif" width=100%></img></div>
 	</div>
 
 	<!-- content div holds all of the divs for the different pages -->
@@ -64,21 +65,25 @@
 						<img src="11.gif" height="80%"></img>
 					</div>
 				</div>
-				<div id="settings-select" class="grid-block"> 
+				<div class="grid-block unfinished"> 
+					<div class="image-placeholder">
+						<img src="ily-menu-gps.gif" height="80%"></img>
+					</div>
+				</div>
+				<div class="grid-block unfinished"> 
+					<div class="image-placeholder">
+						<img src="ily-menu-pictures.gif" height="80%"></img>
+					</div>
+				</div>
+				<div class="grid-block unfinished"> 
 					<div class="image-placeholder">
 						<img src="12.gif" height="80%"></img>
 					</div>
 				</div>
-				<div class="grid-block"> 
-					<div class="image-placeholder"></div>
-				</div>
-				<div class="grid-block"> 
-					<div class="image-placeholder"></div>
-				</div>
 			</div>
 
 			<!-- unfinished overlay -->
-			<div id="unfinished" class="overlaypage">
+			<div id="unfinished" class="overlaypage opaque">
 				<div id="logo"><img src="Ily-Logo-White.gif" height="70px"></img></div>
 
 				This feature has not been implemented yet.
@@ -86,16 +91,42 @@
 				<div id="close-notice"><a href="">Close</a></div>
 			</div>
 
+			<div id="helpoverlay" class="overlaypage transparent">
+				<div id="helpmsg"></div>
+			</div>
+
 			<!-- games menu -->
 
 			<!-- new games screen -->
 			<div id="newgamesmenu" class="contentpage">
-				<div id="tictactoe-select" class="grid-block menuitem">
-					<img src="Ily-ttt-3.gif" height="100%"></img>
+				<div id="tictactoe-load-select" class="grid-block menuitem">
+					<img src="ily-games-ttt.gif" height="80%"></img>
 				</div>
+				<div class="grid-block unfinished">
+					<img src="ily-games-math.gif" height="80%"></img>
+				</div>
+				<div class="grid-block unfinished">
+					<img src="ily-games-memory.gif" height="80%"></img>
+				</div>
+				<div class="grid-block unfinished">
+					<img src="ily-games-paint.gif" height="80%"></img>
+				</div>
+				<div class="grid-block unfinished">
+					<img src="ily-games-scrabble.gif" height="80%"></img>
+				</div>
+				<div class="grid-block unfinished">
+					<img src="ily-games-story.gif" height="80%"></img>
+				</div>
+
 			</div>
 
 			<!-- tic tac toe screen -->
+			<div id="tictactoe-load" class="contentpage">
+				<div id="loadingpanel">
+					<div id="loadingimg" class="loading"></div>
+				</div>
+			</div>
+
 			<div id="tictactoe" class="contentpage">
 				<span id="player_name"></span>make your move (<span id="player_mark"></span>)
 				<div id="tictactoepanel">
@@ -128,8 +159,8 @@
 					<div id="audio-center-container">
 						<div id="audio-cancel"></div>
 						<div id="button-left" class="audiobutton"></div>
-						<div id="button-right" class="audiobutton"></div>
-						<div id="audio-confirm"></div>
+						<div id="button-right" class="audiobutton grayable"></div>
+						<div id="audio-confirm" class="grayable"></div>
 					</div>
 
 				</div>
