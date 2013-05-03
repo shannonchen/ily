@@ -136,6 +136,7 @@ var appstate = {
 						imgholder.removeClass('loading').addClass('loaded');
 						setTimeout(function() {
 							app.goToPage('tictactoe');
+							imgholder.removeClass('loaded').addClass('loading');
 						}, 1000);
 					}, 1000);
 				}
@@ -284,6 +285,7 @@ TicTacToeGame.prototype = {
 
 		$('#quit_game').bind("click", function(e) {
 			e.preventDefault();
+			game.restartGame();
 			appstate.goToPage('mainmenu');
 		});
 	},
@@ -368,7 +370,10 @@ TicTacToeGame.prototype = {
 			$(".end_game").show();
 		} else {
 			// Save the trouble and just restart the game since it a dead end
-			if ( $("#tictactoepanel .marked").length == num_of_rows * num_of_cols ) $("#ask_restart").show();
+			if ( $("#tictactoepanel .marked").length == num_of_rows * num_of_cols ) {
+				$("#ask_restart").show();
+				return true;
+			}
 		}
 		return win;
 	}
